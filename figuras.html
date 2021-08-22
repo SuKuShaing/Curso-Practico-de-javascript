@@ -7,7 +7,38 @@
     <title>Figuras Geométricas | Curso practico de js en Platzi</title>
 </head>
 <body>
-    <h1>Figuras Geométricas</h1>
+    <header>
+        <h1>Figuras Geométricas</h1>
+        <p>Este es el primer taller del curso práctico de JavaScript</p>
+    </header>
+    <main>
+        <h2>Calcula el área y perímetro de un cuadrado</h2>
+        <form id="Cuadrado" action="">
+            <label for="InputCuadrado">Escribe cuanto mide el lado de tu cuadrado</label>
+            <input id="InputCuadrado" type="number">
+            <button type="button" onclick="calcularPerimetroCuadrado()">Calcular el perímetro</button> 
+            <!-- Los botones son por defecto del tipo "submit" (recarga la pagina) pero se le puede cambiar el tipo a tipo "button" -->
+            <button type="button" onclick="calcularAreaCuadrado()">Calcular el área</button>
+        </form>
+        <h2>Calcula el área y perímetro de un triangulo</h2>
+        <form id="Triangulo" action="">
+            <label for="Tri-lado1">¿Cuánto mide el lado 1 de tu triangulo?</label>
+            <input id="Tri-lado1" type="number">
+            <label for="Tri-lado2">¿Cuánto mide el lado 2 de tu triangulo?</label>
+            <input id="Tri-lado2" type="number">
+            <label for="Tri-base">¿Cuánto mide la base de tu triangulo?</label>
+            <input id="Tri-base" type="number">
+            <button type="button" onclick="calcularPerimetroTriangulo()">Calcular el perímetro</button> 
+            <button type="button" onclick="calcularAreaTriangulo()">Calcular el área</button>
+        </form>
+        <h2>Calcula el área y perímetro de un circulo</h2>
+        <form id="Circulo" action="">
+            <label for="InputCiruclo">¿Cuánto mide el radio de tu circulo?</label>
+            <input id="InputCiruclo" type="number">
+            <button type="button" onclick="calcularPerimetroCirulo()">Calcular el perímetro</button> 
+            <button type="button" onclick="calcularAreaCirculo()">Calcular el área</button>
+        </form>
+    </main>
     <script src="./figuras.js"></script>
 </body>
 </html>
