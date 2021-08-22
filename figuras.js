@@ -143,3 +143,49 @@ function calcularAreaCirculo() {
     const area = areaCirculo(value);
     alert(area);
 }
+
+
+//RETO DE MATEMATICAS
+
+
+function esIsoceles(lado1, lado2, base) {
+    //Declaramos variables a usar
+    let superficie;
+    let Alt;
+    if (lado1 == lado2 || lado1 == base || lado2 == base) {
+        //verificamos si es un isósceles y en los if de abajo buscamos cual es la base
+        if (lado1 == lado2){
+            superficie = base;
+            ladoi = lado1;
+        } else if (lado1 == base) {
+            superficie = lado2;
+            ladoi = base;
+        } else if (lado2 == base) {
+            superficie = lado1;
+            ladoi = lado2;
+        } else {
+            console.log("No sé como llegaste aquí");
+            //Jamas debería mostrarse este mensaje puesto que debe haber caído en alguna de las opciones anteriores
+        }
+
+        //Una vez determinado cual es la base y los lados iguales ocupamos la formula de altura de isósceles 
+        Alt =  Math.sqrt((ladoi*ladoi)-((superficie*superficie)/4));
+
+        //Esto verificará si la base esta hacia abajo o no, sí es así, te lo dirá
+        if (baseAbajo(lado1, lado2, base) == Alt) {
+            return console.log("La altura del triangulo isoceles es: " + Alt + " y su base esta abajo y por su puesto, su punta apuntando hacia arriba con sus lados iguales");
+        } else {
+            return console.log("La altura del triangulo isoceles es: " + Alt);
+        }
+
+    } else {
+        return console.log("no es un triangulo isósceles");
+    }
+}
+
+function baseAbajo(lado11, lado22, base3) {
+    let ese = (lado11 + lado22 + base3)/2;
+    let area = Math.sqrt(ese*(ese-lado11)*(ese-lado22)*(ese-base3));
+    ALt2 = (area*2)/base3;
+    return ALt2;
+}
