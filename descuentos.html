@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Porcentaje y descuentos | Curso Práctico de javascript de Platzi</title>
+</head>
+<body>
+    <header>
+        <h1>
+            Porcentaje y descuentos
+        </h1>
+        <p>Este es el segundo taller del Curso Práctico de javascript</p>    
+    </header>
+    <section>
+        <h2>Calcula el precio a pagar de tus productos con descuento</h2>
+        <form>
+            <label for="InputPrice">Escribe el precio de tu producto:</label>
+            <input id="InputPrice" type="number" oninput="ButPriceDiscount()"/>
+
+            <label for="InputDiscount">Escribe el descuento de tu producto:</label>
+            <input id="InputDiscount" type="number" oninput="ButPriceDiscount()"/>
+            <!-- oninput="Formula" hace que al terminar de escribir se actualiza el valor -->
+
+            <button type="button" onclick="ButPriceDiscount()">Calcular el precio con descuento</button>
+            <!-- Los botones son por defecto del tipo "submit" (recarga la pagina) pero se le puede cambiar el tipo a tipo "button" -->
+            
+            <p id="ResulP"></p>
+        </form>
+    </section>
+    <script src="./descuentos.js"></script>
+</body>
+</html>
