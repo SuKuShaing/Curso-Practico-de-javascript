@@ -38,8 +38,7 @@ if (esPar(lista1.length)) {
     // si es impar 
     // se debe colocar el elemento que esta en la pocicion del medio
     mediana = lista1[mitadlista1];
-}
-
+};
 
 function calcularMediaAritmetica(lista) {
     // let sumaLista = 0;
