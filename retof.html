@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salarios</title>
+</head>
+<style>
+
+</style>
+<body>
+    <h1>Calculo de salarios</h1>
+    <p>Ingrese los salarios a evaluar</p>
+    <div class="ingreso">
+        <form action="" id="formularioSueldo" onsubmit="return false;">
+            <!-- El "onsubmit="return false;"" evita que se actualice la pagina la apretar la tecla Enter -->
+            <label for="Sueldo">Coloque el sueldo a ingresar</label>
+            <input type="number" placeholder="Sueldo" id="Sueldo">
+            <button type="button" onclick="calcular()">Ingresar Sueldo</button>
+        </form>
+        <form action="" id="formularioPorcentaje" onsubmit="return false;">
+            <label for="porcentaje">Coloque el porcentaje a segmentar</label>
+            <input type="number" id="porcentaje" placeholder="Porcentaje">
+            <button type="button" onclick="porcentajeTop()">Ingresar Porcentaje</button>
+        </form>
+    </div>
+    <div class="muestrasTotales">
+        <div class="unitarios">
+            <p>Lista de Sueldos ingresados</p>
+            <p id="ListSueldosIngresados">Aquí irá la lista</p>
+        </div>
+        <div class="unitarios">
+            <p>Lista de Sueldos ordenados de menor a mayor</p>
+            <p id="ListSueldosOrdenados">Aquí irá la lista</p>
+        </div>
+    </div>
+    <div class="RestTop">
+        <h2 id="tituloTopX">Top 10%</h2>
+        <div class="unitarios">
+            <p>Moda</p>
+            <p id="ModaSueldosTop">Aquí irá la Moda</p>
+        </div>
+        <div class="unitarios">
+            <p>Mediana (de le lista ordenada)</p>
+            <p id="MedianaSueldosTop">Aquí irá la Mediana</p>
+        </div>
+        <div class="unitarios">
+            <p>Promedio</p>
+            <p id="PromedioSueldosTop">Aquí irá el Promedio</p>
+        </div>
+    </div>
+    <div class="RestGlobales">
+        <h2>Resultados globales</h2>
+        <div class="unitarios">
+            <p>Moda</p>
+            <p id="ModaSueldos">Aquí irá la Moda</p>
+        </div>
+        <div class="unitarios">
+            <p>Mediana (de le lista ordenada)</p>
+            <p id="MedianaSueldos">Aquí irá la Mediana</p>
+        </div>
+        <div class="unitarios">
+            <p>Promedio</p>
+            <p id="PromedioSueldos">Aquí irá el Promedio</p>
+        </div>
+    </div>
+    <script src="./reto.js"></script>
+</body>
+</html>
