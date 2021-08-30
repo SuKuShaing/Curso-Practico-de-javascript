@@ -6,6 +6,8 @@ var listaOrdenada = [];
 var TopX = 10;
 var listaCorta = [];
 var listaTopX = [];
+
+
 /*************************/
 /****** Principal ********/
 /*************************/
@@ -44,6 +46,10 @@ function calcular() {
     ResultadoListaIngresadaOrdenada.innerText = listaOrdenada;
 
     //SECCIÓN DE RESULTADOS GLOBALES
+    //Se cambia el titulo del porcentaje
+    const cambioTituloNormal = document.getElementById("tituloGlobales");
+    cambioTituloNormal.innerText = "Resultados globales (" + listaOrdenada.length + " elementos)";
+    
     //Se muestra la moda
     const modaSueldo = document.getElementById("ModaSueldos");
     modaSueldo.innerText = obtenerModa(listaOrdenada);
@@ -58,28 +64,37 @@ function calcular() {
 
     //SECCIÓN DE RESULTADOS TOPX%
     //Extraemos los elementos TopX del array ordenado
-    console.group("problemo");
     
     listaCorta = [];
     listaOrdenada.forEach(element => {
         listaCorta.push(parseInt(element));
     })
-    // listaCorta = listaOrdenada;
+    // listaCorta = listaOrdenada; //Esto no funciona
 
     var spliceStar = (listaCorta.length * (100 - TopX))/100;
     
+    /* Este if es para que extraiga los últimos elementos del array,
+    sí es par, no había problema funciona bien 
+    Sí es impar, sacaba los elementos y no el último, por eso se le agrega un "+1", 
+    pero había que validar "(listaCorta.length - spliceStar) >= 1" puesto que tiene que ser más que uno para que saque le que sigue, sino saca el primero, pero tampoco tiene que ser cero
+    */
     if (esPar(listaCorta.length)) {
         var spliceCount = listaCorta.length - spliceStar;
     } else {
-        var spliceCount = listaCorta.length - spliceStar + 1;    
+        if ((listaCorta.length - spliceStar) >= 1) {
+            var spliceCount = listaCorta.length - spliceStar + 1;    
+        }
+        // var spliceCount = listaCorta.length - spliceStar;
     }
-    //".splice" hace una extracción de elementos, le damos donde inicia el corte y cuantos elementos saca
-    listaTopX = listaCorta.splice(spliceStar,spliceCount);
-    console.log("listaTopX: "+ listaTopX);
-    console.groupEnd();
 
+    //".splice" hace una extracción de elementos, le damos donde inicia el corte y cuantos elementos saca
+    listaTopX = listaCorta.splice(spliceStar,spliceCount);  
+    
     if (listaTopX.length > 0) {
-        console.log("Entre tengo más de 1");
+        //Se cambia el titulo del porcentaje
+        const cambioTitulo = document.getElementById("tituloTopX");
+        cambioTitulo.innerText = "Top "+ TopX + "% de sueldos más altos (" + listaTopX.length + " elementos)";
+
         //Se muestra la moda
         const modaSueldoTop = document.getElementById("ModaSueldosTop");
         modaSueldoTop.innerText = obtenerModa(listaTopX);
@@ -92,7 +107,11 @@ function calcular() {
         const promedioSueldoTop = document.getElementById("PromedioSueldosTop");
         promedioSueldoTop.innerText = calcularMediaAritmetica(listaTopX);
     } else {
-        console.log("Tengo menos de 1");
+        //Se cambia el titulo del porcentaje
+        const cambioTitulo = document.getElementById("tituloTopX");
+        cambioTitulo.innerText = "Top "+ TopX + "% de sueldos más altos (" + listaTopX.length + " elementos)";
+
+        
         //Se muestra la moda
         const modaSueldoTop = document.getElementById("ModaSueldosTop");
         modaSueldoTop.innerText = "Pocos elementos para evaluar";
@@ -113,19 +132,21 @@ function porcentajeTop() {
     const porcentajeIngresado = parseInt(inputPorcentaje.value);
 
     if (!isNaN(porcentajeIngresado)) {
-        TopX = porcentajeIngresado;
+        if (porcentajeIngresado > 0 && porcentajeIngresado <= 100) {
+            TopX = porcentajeIngresado;
+        } else {
+            alert("Favor de ingresar un número entre el 0 y el 100");
+        }
     };
     
     //Limpia el Input del formulario
     formularioPorcentaje.reset();
 
-    //Se cambia el titulo del porcentaje
-    const cambioTitulo = document.getElementById("tituloTopX");
-    cambioTitulo.innerText = "Top "+ TopX + "% de sueldos más altos";
-
     //Se llama a la fc principal para que haga lo suyo
     calcular();
 };
+
+
 
 /*************************/
 /***** Fc Auxiliares *****/
@@ -240,5 +261,10 @@ function obtenerMediana(lista) {
 
 
 
+// ESTO FALTA
+// Falta agregar el CSS
 
-// Falta agregar que muestre cuantos elementos hay en total y el topX
+/* 
+A MEJORAR, 
+QUE SOLO ACEPTE NÚMEROS DEL 1 AL 100 EN EL PORCENTAJE mediante una barra deslizadora
+*/
